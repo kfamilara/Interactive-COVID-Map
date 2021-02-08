@@ -1,0 +1,58 @@
+libname COVID "/home/u53693712/sasuser.v94/COVID";
+
+* Here I just imported the file for each day. I also added a "population" variable to each file before importing.
+The population variable included the population for each state. This variable can be found in the
+ "UID_ISO_FIPS_LookUp_Table.csv" file in the Johns Hopkins Database;
+
+proc import datafile: "Johns Hopkins File (e.g. 1-11-2021)"
+dbms =csv
+out: COVID.final;
+getnames=yes;
+run;
+
+*I created a new variable "per100" that represented the active cases per 100,000 population;
+*Then I turned per100 into a categorical variable with 5 categories;
+
+data COVID.final;
+set COVID.final;
+per100 = active/population * 100000;
+state =FIPS;
+if per100 < 200 then per100cat = 1;
+else if per100 < 400 then per100cat = 2;
+else if per100 < 1000 then per100cat = 3;
+else if per100 < 7000 then per100cat = 4;
+else if per100 < 10000 then per100cat = 5;
+run;
+
+
+*Here I picked out the colors for the map;
+
+pattern1 value=solid color=white;
+pattern2 value=solid color=khaki;
+pattern3 value=solid color =orange;
+pattern4 value = solid color=red;
+pattern5 value=solid color=darkred;
+
+*Here I formatted the variable"
+proc format;
+value labels 1 = "less than 200" 2 = "200 to 400" 3 = "400 to 1000" 4 = "1000 to 7000" 5 = " greater than 7000";
+run;
+
+* I added the legend and title;
+legend1 shape=bar(4,2) across=3  label= ("Active cases per" j=left "100,000 people") frame;
+
+title "February 2nd, 2021";
+footnote 
+link='https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports_us'
+color=gray "Source: Johns Hopkins University COVID-19 Data";
+
+*This is the most important part;
+*This is where the graph is made!!!!!;
+
+proc gmap data=COVID.final map=maps.us;
+format per100cat labels.;
+id state;
+choro per100cat/legend=legend1;
+run;
+
+*I repeated this process for each day (Jan 1, Jan2 ,Jan 3, etc.)

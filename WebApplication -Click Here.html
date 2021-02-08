@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>COVID-19 Graph</title>
+	<link rel="stylesheet" href="graph.css">
+</head>
+<body>
+    
+<div class="main" >
+	<div class="slider_container" >
+        	<input type="range" min="0" max="32" value="0" id="slider" oninput = "slider(value)">
+	</div>
+	<div class="graphscontainer">
+        	<div class="graphs">
+            	<img src="./COVID Graph/Jan1.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan2.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan3.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan4.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan5.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan6.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan7.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan8.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan9.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan10.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan11.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan12.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan13.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan14.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan15.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan16.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan17.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan18.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan19.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan20.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan21.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan22.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan23.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan24.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan25.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan26.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan27.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan28.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan29.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan30.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Jan31.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Feb1.png" alt="" class="pictures">
+            	<img src="./COVID Graph/Feb2.png" alt="" class="pictures">
+        </div>
+</div>
+<script>
+graphs = document.querySelector (".graphs")
+
+function slider (value) {
+graphs.style.transform = 'translateX(' + (-100 * value) + '%)';
+}
+</script>
+
+</body>
+</html>
